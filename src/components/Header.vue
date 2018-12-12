@@ -1,23 +1,35 @@
 <template>
   <div class="header">
-    <h1>The Daily Sigh</h1>
-    <h2>Your trusted source for societal disappointment!!!</h2>
-    <hr>
+    <v-container>
+      <h1 class="text-sm-center">The Daily Sigh</h1>
+      <v-layout row justify-space-between>
+        <v-flex>{{date}}</v-flex>
+        <v-flex class="text-xs-center">
+          <span class="subheading">Your trusted source for societal disappointment!!!</span>
+        </v-flex>
+        <v-flex class="text-xs-right">
+          <span>Section: Top Stories</span>
+        </v-flex>
+      </v-layout>
+      <hr>
+    </v-container>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'header'
+  computed: {
+    date() {
+      var moment = require('moment');
+      return moment().format("MMMM Do, YYYY");
+    }
+  }
 }
 </script>
 
 <style scoped>
-.header {
-  text-align: center;
-}
 h1 {
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Merriweather', serif;
   font-size: 4rem;
   margin-bottom: 0.2rem;
 }
