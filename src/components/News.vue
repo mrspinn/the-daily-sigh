@@ -1,14 +1,20 @@
 <template>
     <div class="news">
-        <div class="topStory">
-            <h1>This is a Your Top Story for the Day</h1>
-            <div class="imageDiv">
-                <div class="image"></div>
-                <p class="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint ab molestiae, eveniet harum voluptatem pariatur maxime, nulla quas, nesciunt cumque impedit beatae nobis minima odio at consequuntur totam quisquam quidem?</p>
-            </div>
-            <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, ad harum. Iusto voluptatum minima ipsum iure eos quidem porro voluptate explicabo alias assumenda dolorum, tenetur deleniti, autem dolor debitis iste.
-            Repellendus officiis, amet voluptate saepe repudiandae eos, fugit sequi cum assumenda culpa odio architecto id dolorem neque, laborum recusandae numquam! Laudantium omnis doloremque itaque quos ab saepe eveniet, ducimus ipsam?
-            Ipsum autem, consectetur quo maiores voluptatibus atque quidem molestias vel temporibus rem minima magnam! Vitae eum optio obcaecati voluptatem quod amet dignissimos esse a similique pariatur, laborum dolore, at commodi!</div>
+        <div v-for="story in topStories" :key="story.url">
+            <v-layout row class="justify-center">
+                <v-flex xs12 sm10 md8>
+                    <v-card>
+                        <v-card-title class="headline">
+                            {{story.title}}
+                        </v-card-title>
+                        <v-card-text>
+                            {{story.abstract}}
+                        </v-card-text>
+                    </v-card>
+                    <v-divider></v-divider>
+                </v-flex>
+            </v-layout>
+            
         </div>
     </div>
 </template>
@@ -24,14 +30,14 @@ export default {
     mounted () {
         
         axios
-        .get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=4482d9dc32bd470aa61fb2f15b3ad968")
+        .get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
         .then(response => {this.topStories = response.data.results; console.log(response)});
     }
 }
 </script>
 
 <style>
-    .news {
+    /* .news {
         width: 80%;
         margin: 0 auto;
         border-right: 1px solid #aaa;
@@ -52,5 +58,5 @@ export default {
     }
     .content {
         display: inline;
-    }
+    } */
 </style>
