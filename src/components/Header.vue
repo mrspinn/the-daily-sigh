@@ -1,7 +1,7 @@
 <template>
   <div class="header">
-    <h1>The Daily News</h1>
-    <h2>Your 3rd-party source for all of the latest breaking news!!!</h2>
+    <h1>The Daily Sigh</h1>
+    <h2>Your trusted source for societal disappointment!!!</h2>
     <hr>
   </div>
 </template>
