@@ -1,7 +1,8 @@
 <template>
     <div class="news">
         <!-- Smooth scroll button fixed -->
-        <a href="#app" v-smooth-scroll="{duration:500}" class="toTop"><v-icon app click="">keyboard_arrow_up</v-icon></a>
+        <a href="#app" @click="$vuetify.goTo('#app', scrollOptions)" class="toTop hi"><v-icon app click="">keyboard_arrow_up</v-icon></a>
+        <!-- <a href="#app" v-smooth-scroll="{duration:500}" class="toTop"><v-icon app click="">keyboard_arrow_up</v-icon></a> -->
         <v-container class="pt-0" style="position: relative;">
               
             <v-layout class="justify-space-between mb-2 align-end" row>
@@ -55,7 +56,12 @@ export default {
     data() {
         return {
             pageArray: [5, 10, 15, 25, 50],
-            storiesPerPage: 5
+            storiesPerPage: 5,
+            scrollOptions: {
+                duration: 300,
+                offset: 0,
+                easing: 'easeInOutCubic',
+            }
         }
     },
     methods: {
