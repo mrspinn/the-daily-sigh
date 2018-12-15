@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <v-app>
+  <div id="app" >
+    <v-app class="grey lighten-3">
       <app-navbar></app-navbar>
       <app-header></app-header>
       <app-news></app-news>
