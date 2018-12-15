@@ -4,7 +4,8 @@
         <a 
             href="#app" 
             @click="$vuetify.goTo('#app', scrollOptions)" 
-            class="toTop hi">
+            class="toTop hi"
+            title="Scroll to Top">
             <v-icon app click="">keyboard_arrow_up</v-icon>
         </a>
         
@@ -21,10 +22,10 @@
                 </v-flex>
                 <!-- STORIES PER PAGE BUTTON -->
                 <v-menu offset-y bottom right flat>
-                    <template slot="activator">
-                        <v-btn small flat class="mt-1 caption">Stories per page</v-btn>
+                    <v-layout align-center slot="activator">
+                        <v-btn small flat class="caption">Stories per page</v-btn>
                         <v-chip flat outline small>{{storiesPerPage}}</v-chip>
-                    </template>
+                    </v-layout>
                     <template v-for="number in pageArray">
                         <v-chip
                             small

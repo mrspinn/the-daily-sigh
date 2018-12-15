@@ -1,8 +1,8 @@
 <template>
     <nav>
         <!-- NAVBAR -->
-        <v-toolbar dark class="grey darken-3">
-            <v-btn @click="drawer = !drawer"><v-icon small>menu</v-icon>&nbsp;Sections</v-btn>
+        <v-toolbar dark class="grey darken-3" height="45px">
+            <v-btn @click="drawer = !drawer" small class="caption text-align-center"><v-icon small>menu</v-icon>&nbsp;Sections</v-btn>
             <v-toolbar-items class="hidden-sm-and-down">
                 <v-btn 
                     small flat class="caption" 
@@ -17,11 +17,10 @@
         <!-- SIDE DRAWER -->
         <v-navigation-drawer v-model="drawer" app dark class="grey darken-3">
             <v-list>
-                <!-- <v-img src="../../public/sigh.jpeg"></v-img> -->
                 <v-subheader class="display-2 grey--text">Sections</v-subheader>
                 <v-layout row wrap>
                     <v-flex xs12 sm6 v-for="section in sections" :key="section">
-                        <v-list-tile>
+                        <v-list-tile @click="changeSection(section)">
                             <v-list-tile-content>
                                 - {{section | formatSection}}
                             </v-list-tile-content>
@@ -56,5 +55,7 @@ export default {
 </script>
 
 <style>
-
+    nav {
+        z-index: 2;
+    }
 </style>

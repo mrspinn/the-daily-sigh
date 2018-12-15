@@ -43,7 +43,11 @@
               <v-flex v-if="topic.length > 30" :key="index" lg2 md3 sm4>
                 <v-layout class="justify-center">
                   <v-tooltip bottom>
-                    <v-chip flat small slot="activator" @click="changeTopic(topic)">
+                    <v-chip 
+                      flat small 
+                      slot="activator" 
+                      @click="changeTopic(topic)"
+                      class="mx-1">
                       {{topic | shorten}}
                     </v-chip>
                     <span>{{topic}}</span>
@@ -52,7 +56,7 @@
               </v-flex>
               <v-flex v-else :key="index" lg2 md3 sm4>
                 <v-layout class="justify-center">
-                  <v-chip flat small @click="changeTopic(topic)">
+                  <v-chip flat small @click="changeTopic(topic)" class="mx-1">
                     {{topic | shorten}}
                   </v-chip>
                 </v-layout>
