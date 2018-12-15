@@ -38,22 +38,14 @@ export default {
             this.storiesPerPage = num;
         }
     },
-<<<<<<< HEAD
     mounted () {
         
         axios
         .get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
         .then(response => {this.topStories = response.data.results; console.log(response)});
-||||||| parent of af35134... Add stories per page feature. Add smooth scroll to top feature.
-    mounted () {
-        
-        axios
-        .get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=4482d9dc32bd470aa61fb2f15b3ad968")
-        .then(response => {this.topStories = response.data.results; console.log(response)});
-=======
+    },
     components: {
         appArticle: Article
->>>>>>> af35134... Add stories per page feature. Add smooth scroll to top feature.
     }
 }
 </script>
