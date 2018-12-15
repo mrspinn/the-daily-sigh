@@ -10,6 +10,30 @@ axios.defaults.baseURL = "https://api.nytimes.com/svc/topstories/v2";
 axios.defaults.params = {};
 axios.defaults.params['api-key'] = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
+Vue.filter('formatSection', function(val) {
+  if (val == 'home.json') {
+    return "Top Stories"
+  } else {
+    return val.charAt(0).toUpperCase() + val.slice(1).split('.')[0];
+  }   
+});
+
+Vue.filter('shorten', function(val) {
+  // SHORTEN VARIOUS COMMON TOPIC PHRASES
+  var short = val.replace("United States", "US").replace(", Donald J", "");
+  if (short.includes('(') && short.includes(')')) {
+    short = short.slice(0, short.indexOf('(')-1)
+  }
+  if (short.length > 30) {
+    short = short.slice(0, 30) + "...";
+  }
+  return short;
+});
+
+Vue.filter('capitalize', function(val) {
+  return val.charAt(0).toUpperCase() + val.slice(1);
+});
+
 new Vue({
   store,
   mounted() {

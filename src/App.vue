@@ -1,11 +1,12 @@
 <template>
   <div id="app" >
     <v-app class="grey lighten-3">
-      <app-navbar></app-navbar>
-      <app-header></app-header>
-      <app-news></app-news>
+      <v-content>
+        <app-navbar></app-navbar>
+        <app-header></app-header>
+        <app-news></app-news>
+      </v-content>
     </v-app>
-    
   </div>
 </template>
 
