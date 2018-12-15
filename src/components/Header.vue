@@ -1,12 +1,15 @@
 <template>
   <div class="header">
     <v-container class="pb-0">
+      <!-- HEADER -->
       <h1 class="text-sm-center">The Daily Sigh</h1>
+      <!-- SUBHEADER -->
       <v-layout row justify-space-between>
         <v-flex>{{date}}</v-flex>
         <v-flex class="text-xs-center">
           <span class="subheading">Your trusted source for societal disappointment!!!</span>
         </v-flex>
+        <!-- SECTION SELECTION MENU -->
         <v-flex class="text-xs-right">
           <v-menu transition="slide-y-transition" offset-y bottom>
             <template slot="activator">
@@ -29,6 +32,7 @@
         </v-flex>
       </v-layout>
       <hr>
+      <!-- TOPIC CHIPS -->
       <v-layout row align-center>
         <v-flex class="text-xs-center">In the<br>News:</v-flex>
         <v-flex xs12 s12 md11>
@@ -79,7 +83,7 @@ export default {
       this.$store.dispatch('fetchStories');
     },
     changeTopic(topic) {
-      console.log(topic);
+      this.$store.dispatch('filterByTopic', topic);
     }
   },
   filters: {
