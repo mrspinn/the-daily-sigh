@@ -2,10 +2,9 @@
     <div class="news">
         <!-- Smooth scroll button fixed -->
         <a href="#app" @click="$vuetify.goTo('#app', scrollOptions)" class="toTop hi"><v-icon app click="">keyboard_arrow_up</v-icon></a>
-        <!-- <a href="#app" v-smooth-scroll="{duration:500}" class="toTop"><v-icon app click="">keyboard_arrow_up</v-icon></a> -->
         <v-container class="pt-0" style="position: relative;">
               
-            <v-layout class="justify-space-between mb-2 align-end" row>
+            <v-layout class="justify-space-between align-center" row>
                 <!-- Current Topic -->
                 <v-flex class="caption">
                     <span class="pr-1"><v-icon small class="pr-1">filter_list</v-icon>Filtered Topic:</span>
@@ -14,7 +13,7 @@
                 <!-- Stories per page button -->
                 <v-menu offset-y bottom right flat>
                     <template slot="activator">
-                        <v-btn small flat>Stories per page</v-btn><v-chip flat outline small>{{storiesPerPage}}</v-chip>
+                        <v-btn small flat class="mt-1 caption">Stories per page</v-btn><v-chip flat outline small>{{storiesPerPage}}</v-chip>
                     </template>
                     <template v-for="number in pageArray">
                         <v-chip

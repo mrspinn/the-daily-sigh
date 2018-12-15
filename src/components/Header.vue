@@ -1,23 +1,25 @@
 <template>
   <div class="header">
-    <v-container class="pb-0">
+    <v-container class="pb-0 fluid">
       <!-- HEADER -->
-      <h1 class="text-sm-center">The Daily Sigh</h1>
+      <h1 class="text-xs-center">The Daily Sigh</h1>
       <!-- SUBHEADER -->
-      <v-layout row justify-space-between>
-        <v-flex>{{date}}</v-flex>
-        <v-flex class="text-xs-center">
+      <v-layout row class="justify-space-between" wrap>
+        <v-flex xs12 sm2 class="text-xs-center text-sm-left">{{date}}</v-flex>
+        <v-flex xs12 sm8 class="text-xs-center">
           <span class="subheading">Your trusted source for societal disappointment!!!</span>
         </v-flex>
         <!-- SECTION SELECTION MENU -->
-        <v-flex class="text-xs-right">
+        <v-flex sm2 class="text-xs-center text-sm-right hidden-xs-only" >
           <v-menu transition="slide-y-transition" offset-y bottom>
             <template slot="activator">
-              <span class="grey--text">Section:&nbsp;</span>
-              <span class="font-weight-bold text-align-top">
-                {{getSection | formatSection }}
-                <v-icon small>arrow_drop_down</v-icon>
-              </span>
+              <v-layout row wrap>
+                <span class="grey--text">Section:&nbsp;</span>
+                <span class="font-weight-bold text-align-top">
+                  {{getSection | formatSection }}
+                  <v-icon small>arrow_drop_down</v-icon>
+                </span>
+              </v-layout>
             </template>
             <v-list dense class="overflow-hidden">
               <v-list-tile
@@ -33,26 +35,37 @@
       </v-layout>
       <hr>
       <!-- TOPIC CHIPS -->
-      <v-layout row align-center>
+      <v-layout row align-center class="hidden-sm-and-down">
         <v-flex class="text-xs-center">In the<br>News:</v-flex>
         <v-flex xs12 s12 md11>
-          <v-layout wrap class="justify-space-around">
+          <v-layout wrap class="justify-space-between">
             <template v-for="(topic, index) in getTopics.slice(0, 12)">
-              <template v-if="topic.length > 25">
-                <v-tooltip bottom :key="index">
-                  <v-chip flat small slot="activator"
-                  @click="changeTopic(topic)">{{topic | shorten}}</v-chip>
-                  <span>{{topic}}</span>
-                </v-tooltip>
-              </template>
-              <template v-else>
-                <v-chip flat small 
-                @click="changeTopic(topic)" :key="index">{{topic | shorten}}</v-chip>
-              </template>
+              <v-flex v-if="topic.length > 25" bottom :key="index" lg2 md3 sm4>
+                <v-layout class="justify-center">
+                  <v-tooltip>
+                    <v-chip 
+                      flat small slot="activator"
+                      @click="changeTopic(topic)">
+                      {{topic | shorten}}
+                    </v-chip>
+                    <span>{{topic}}</span>
+                  </v-tooltip>
+                </v-layout>
+              </v-flex>
+              <v-flex v-else :key="index" lg2 md3 sm4>
+                <v-layout class="justify-center">
+                  <v-chip 
+                    flat small 
+                    @click="changeTopic(topic)">
+                    {{topic | shorten}}
+                  </v-chip>
+                </v-layout>
+              </v-flex>
             </template>
           </v-layout>
         </v-flex>
-      </v-layout>      
+      </v-layout>  
+      <hr class="hidden-sm-and-down">    
     </v-container>
   </div>
 </template>
