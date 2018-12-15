@@ -8,7 +8,7 @@
           <span class="subheading">Your trusted source for societal disappointment!!!</span>
         </v-flex>
         <v-flex class="text-xs-right">
-          <v-menu transition="slide-y-transition" bottom>
+          <v-menu transition="slide-y-transition" offset-y bottom>
             <template slot="activator">
               <span class="grey--text">Section:&nbsp;</span>
               <span class="font-weight-bold text-align-top">
@@ -16,7 +16,7 @@
                 <v-icon small>arrow_drop_down</v-icon>
               </span>
             </template>
-            <v-list dense>
+            <v-list dense class="overflow-hidden">
               <v-list-tile
                 v-for="(section, index) in sections.slice(0, 15)"
                 :key="index"
@@ -29,19 +29,26 @@
         </v-flex>
       </v-layout>
       <hr>
-      <template v-for="(topic, index) in getTopics.slice(0, 12)">
-        <template v-if="topic.length > 29">
-          <v-tooltip bottom :key="index">
-            <v-chip flat outline color="grey" small slot="activator"
-            @click="changeTopic(topic)">{{topic | shorten}}</v-chip>
-            <span>{{topic}}</span>
-          </v-tooltip>
-        </template>
-        <template v-else>
-          <v-chip flat outline color="grey" small 
-          @click="changeTopic(topic)" :key="index">{{topic | shorten}}</v-chip>
-        </template>
-      </template>
+      <v-layout row align-center>
+        <v-flex class="text-xs-center">In the<br>News:</v-flex>
+        <v-flex xs12 s12 md11>
+          <v-layout wrap class="justify-space-around">
+            <template v-for="(topic, index) in getTopics.slice(0, 12)">
+              <template v-if="topic.length > 25">
+                <v-tooltip bottom :key="index">
+                  <v-chip flat small slot="activator"
+                  @click="changeTopic(topic)">{{topic | shorten}}</v-chip>
+                  <span>{{topic}}</span>
+                </v-tooltip>
+              </template>
+              <template v-else>
+                <v-chip flat small 
+                @click="changeTopic(topic)" :key="index">{{topic | shorten}}</v-chip>
+              </template>
+            </template>
+          </v-layout>
+        </v-flex>
+      </v-layout>      
     </v-container>
   </div>
 </template>
@@ -109,5 +116,8 @@ h2 {
 }
 .section {
     height: 30px !important;
+}
+.v-list--dense .v-list__tile {
+  height: 30px !important;
 }
 </style>

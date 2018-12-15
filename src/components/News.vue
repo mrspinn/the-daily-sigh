@@ -5,7 +5,9 @@
               
             <v-layout class="justify-end mb-2">
                 <v-menu offset-y bottom right flat>
-                    <v-btn small slot="activator">Stories per page</v-btn>
+                    <template slot="activator">
+                        <v-btn small flat>Stories per page</v-btn><v-chip flat outline small>{{storiesPerPage}}</v-chip>
+                    </template>
                     <template v-for="number in pageArray">
                         <v-chip
                             small
