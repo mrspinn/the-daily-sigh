@@ -15,6 +15,9 @@ What things you need to install the software and how to install them
 
 ### Installing
 
+Request an API Key from [https://developer.nytimes.com/](https://developer.nytimes.com/)
+(This will be placed in the ```axios-config.js``` file)
+
 Navigate to the folder you would like to install the app in
 
 ```
@@ -26,6 +29,8 @@ cd into the created folder
 ```
 cd the-daily-sigh
 ```
+
+Edit ```axios-config.js``` (in the /src folder) and put your API key in the place of ```XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX```
 
 Install dependencies
 
