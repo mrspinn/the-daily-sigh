@@ -1,15 +1,15 @@
 <template>
     <div class="news">
         <!-- SCROLL TO TOP -->
-        <a 
-            href="#app" 
-            @click="$vuetify.goTo('#app', scrollOptions)" 
+        <a
+            href="#app"
+            @click="$vuetify.goTo('#app', scrollOptions)"
             class="toTop hi"
             title="Scroll to Top">
             <v-icon app click="">keyboard_arrow_up</v-icon>
         </a>
-        
-        <v-container class="pt-0">    
+
+        <v-container class="pt-0">
             <!-- NEWSFEED OPTIONS -->
             <v-layout class="justify-space-between align-center" row>
                 <!-- CURRENT TOPIC FILTER -->
@@ -18,7 +18,7 @@
                         <v-icon small class="pr-1">filter_list</v-icon>
                         Filtered Topic:
                     </span>
-                    <span class="grey--text">{{$store.getters.getCurrentTopic}}</span>
+                    <span class="grey--text">{{getCurrentTopic}}</span>
                 </v-flex>
                 <!-- STORIES PER PAGE BUTTON -->
                 <v-menu offset-y bottom right flat>
@@ -38,17 +38,17 @@
             </v-layout>
 
             <!-- NEWS FEED. Show all stories if no topic is selected. -->
-            <template v-if="!$store.getters.isFiltered">
-                <app-article 
-                    v-for="story in $store.getters.getStories.slice(0, this.storiesPerPage)" 
-                    :key="story.url" 
+            <template v-if="!isFiltered">
+                <app-article
+                    v-for="story in getStories.slice(0, this.storiesPerPage)"
+                    :key="story.url"
                     :story="story">
                 </app-article>
             </template>
             <!-- NEWS FEED. Show filtered stories if topic is selected. -->
             <template v-else>
-                <app-article 
-                    v-for="story in $store.getters.getFiltered.slice(0, this.storiesPerPage)" 
+                <app-article
+                    v-for="story in getFiltered.slice(0, this.storiesPerPage)"
                     :key="story.url"
                     :story="story">
                 </app-article>
@@ -59,29 +59,37 @@
 </template>
 
 <script>
-import Article from "./Article.vue";
-import { mapGetters } from 'vuex';
+import Article from './Article.vue'
+import { mapGetters } from 'vuex'
 
 export default {
-    data() {
-        return {
-            pageArray: [5, 10, 15, 25, 50],
-            storiesPerPage: 5,
-            scrollOptions: {
-                duration: 300,
-                offset: 0,
-                easing: 'easeInOutCubic',
-            }
-        }
-    },
-    methods: {
-        setStoriesPerPage(num) {
-            this.storiesPerPage = num;
-        }
-    },
-    components: {
-        appArticle: Article
+  data () {
+    return {
+      pageArray: [5, 10, 15, 25, 50],
+      storiesPerPage: 5,
+      scrollOptions: {
+        duration: 300,
+        offset: 0,
+        easing: 'easeInOutCubic'
+      }
     }
+  },
+  computed: {
+    ...mapGetters([
+      'getStories',
+      'getCurrentTopic',
+      'isFiltered',
+      'getFiltered'
+    ])
+  },
+  methods: {
+    setStoriesPerPage (num) {
+      this.storiesPerPage = num
+    }
+  },
+  components: {
+    appArticle: Article
+  }
 }
 </script>
 

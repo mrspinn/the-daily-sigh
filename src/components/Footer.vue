@@ -1,9 +1,9 @@
 <template>
     <v-footer class="pa-3">
         <!-- SCROLL TO TOP -->
-            <a 
-                href="#app" 
-                @click="$vuetify.goTo('#app', scrollOptions)" 
+            <a
+                href="#app"
+                @click="$vuetify.goTo('#app', scrollOptions)"
                 class="grey--text"
                 title="Scroll to Top">
                     <v-layout class="align-center mt-1">

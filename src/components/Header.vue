@@ -22,9 +22,9 @@
               </v-layout>
             </template>
             <v-list dense class="overflow-hidden">
-              <v-list-tile 
-                v-for="(section, index) in sections.slice(0, 15)" 
-                :key="index" 
+              <v-list-tile
+                v-for="(section, index) in sections.slice(0, 15)"
+                :key="index"
                 @click="changeSection(section)"
                 class="section">
                 {{ section | capitalize }}
@@ -43,9 +43,9 @@
               <v-flex v-if="topic.length > 30" :key="index" lg2 md3 sm4>
                 <v-layout class="justify-center">
                   <v-tooltip bottom>
-                    <v-chip 
-                      flat small 
-                      slot="activator" 
+                    <v-chip
+                      flat small
+                      slot="activator"
                       @click="changeTopic(topic)"
                       class="mx-1">
                       {{topic | shorten}}
@@ -66,43 +66,43 @@
         </v-flex>
       </v-layout>
       <v-divider class="hidden-sm-and-down"></v-divider>
-    </v-container>    
+    </v-container>
   </div>
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex'
 
-  export default {
-    data() {
-      return {
-        sections: ["home", "opinion", "world", "national", "politics", "upshot", "nyregion", "business", "technology",
-          "science", "health", "sports", "arts", "books", "movies", "theater", "sundayreview", "fashion", "tmagazine",
-          "food", "travel", "magazine", "realestate", "automobiles", "obituaries", "insider"
-        ]
-      }
+export default {
+  data () {
+    return {
+      sections: ['home', 'opinion', 'world', 'national', 'politics', 'upshot', 'nyregion', 'business', 'technology',
+        'science', 'health', 'sports', 'arts', 'books', 'movies', 'theater', 'sundayreview', 'fashion', 'tmagazine',
+        'food', 'travel', 'magazine', 'realestate', 'automobiles', 'obituaries', 'insider'
+      ]
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'getStories',
+      'getTopics',
+      'getSection'
+    ]),
+    date () {
+      var moment = require('moment')
+      return moment().format('MMMM Do, YYYY')
+    }
+  },
+  methods: {
+    changeSection (section) {
+      this.$store.dispatch('changeSection', section + '.json')
+      this.$store.dispatch('fetchStories')
     },
-    computed: {
-      ...mapGetters([
-        'getStories',
-        'getTopics',
-        'getSection'
-      ]),
-      date() {
-        var moment = require('moment');
-        return moment().format("MMMM Do, YYYY");
-      }
-    },
-    methods: {
-      changeSection(section) {
-        this.$store.dispatch('changeSection', section + '.json');
-        this.$store.dispatch('fetchStories');
-      },
-      changeTopic(topic) {
-        this.$store.dispatch('filterByTopic', topic);
-      }
+    changeTopic (topic) {
+      this.$store.dispatch('filterByTopic', topic)
     }
   }
+}
 </script>
 
 <style scoped>

@@ -23,7 +23,7 @@ export default {
     appNavbar: Navbar,
     appHeader: Header,
     appNews: News,
-    appFooter: Footer,
+    appFooter: Footer
   }
 }
 </script>
