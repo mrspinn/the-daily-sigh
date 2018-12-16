@@ -1,6 +1,6 @@
 # The Daily Sigh
 
-A web-app to fetch current stories from the NYTimes API. Can fetch top articles from any section of NYTimes and can also filter by topics.
+A web-app to fetch current stories from the NYTimes API. Can fetch top articles from any section of NYTimes and can also filter by topics. Built for Sport Travel as an entry project. 
 
 ## Getting Started
 
