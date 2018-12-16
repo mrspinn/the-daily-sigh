@@ -79,12 +79,6 @@ export default {
             this.storiesPerPage = num;
         }
     },
-    mounted () {
-        
-        axios
-        .get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-        .then(response => {this.topStories = response.data.results; console.log(response)});
-    },
     components: {
         appArticle: Article
     }
