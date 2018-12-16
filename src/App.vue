@@ -5,6 +5,7 @@
         <app-navbar></app-navbar>
         <app-header></app-header>
         <app-news></app-news>
+        <app-footer></app-footer>
       </v-content>
     </v-app>
   </div>
@@ -14,13 +15,15 @@
 import Header from './components/Header.vue'
 import News from './components/News.vue'
 import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'app',
   components: {
     appNavbar: Navbar,
     appHeader: Header,
-    appNews: News
+    appNews: News,
+    appFooter: Footer,
   }
 }
 </script>
