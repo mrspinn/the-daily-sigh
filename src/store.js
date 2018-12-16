@@ -10,7 +10,8 @@ export const store = new Vuex.Store({
     section: 'home.json',
     topic: 'None',
     filteredStories: [],
-    filtered: false
+    filtered: false,
+    apiError: false
   },
   getters: {
     getStories: state => {
@@ -45,6 +46,9 @@ export const store = new Vuex.Store({
     },
     getCurrentTopic: state => {
       return state.topic
+    },
+    getAPIStatus: state => {
+      return state.apiError
     }
   },
   mutations: {
@@ -67,7 +71,10 @@ export const store = new Vuex.Store({
   actions: {
     fetchStories: ({ commit, state }) => {
       axios.get(state.section).then(res => {
+        state.apiError = false;
         commit('updateStories', res.data.results)
+      }).catch(() => {
+        state.apiError = true;
       })
     },
     changeSection: ({ commit }, payload) => {

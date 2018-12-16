@@ -1,11 +1,19 @@
 <template>
   <div id="app" >
     <v-app class="grey lighten-3">
-      <v-content>
+      <v-content v-if="!$store.getters.getAPIStatus">
         <app-navbar></app-navbar>
         <app-header></app-header>
         <app-news></app-news>
         <app-footer></app-footer>
+      </v-content>
+      <v-content v-else>
+        <v-container class="text-xs-center mt-5">
+          <div class="display-1">Please request an API Key from<br><a href="https://developer.nytimes.com/">https://developer.nytimes.com/</a> and place it in the <br>axios-config.js file.</div>
+          <br>
+          <br>
+          <div class="display-1">Thanks! Enjoy <i><u>The Daily Sigh</u></i> !</div>
+        </v-container>
       </v-content>
     </v-app>
   </div>
