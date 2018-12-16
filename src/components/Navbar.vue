@@ -47,6 +47,7 @@ export default {
   },
   methods: {
     changeSection (section) {
+      this.drawer = false
       this.$store.dispatch('changeSection', section + '.json')
       this.$store.dispatch('fetchStories')
     }
@@ -56,6 +57,6 @@ export default {
 
 <style>
     nav {
-        z-index: 2;
+        z-index: 3;
     }
 </style>

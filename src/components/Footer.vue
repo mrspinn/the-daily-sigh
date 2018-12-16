@@ -12,13 +12,22 @@
                     </v-layout>
             </a>
             <v-spacer></v-spacer>
-            <div class="grey--text">&copy; Spencer Frost for Sport Travel {{ new Date().getFullYear() }}</div>
+            <div class="grey--text hidden-xs-only">&copy; Spencer Frost for Sport Travel {{ new Date().getFullYear() }}</div>
+            <div class="grey--text hidden-sm-and-up caption">&copy; Spencer Frost for Sport Travel {{ new Date().getFullYear() }}</div>
     </v-footer>
 </template>
 
 <script>
 export default {
-
+  data () {
+    return {
+      scrollOptions: {
+        duration: 300,
+        offset: 0,
+        easing: 'easeInOutCubic'
+      }
+    }
+  }
 }
 </script>
 
