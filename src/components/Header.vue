@@ -56,7 +56,10 @@
               </v-flex>
               <v-flex v-else :key="index" lg2 md3 sm4>
                 <v-layout class="justify-center">
-                  <v-chip flat small @click="changeTopic(topic)" class="mx-1">
+                  <v-chip
+                    flat small
+                    @click="changeTopic(topic)"
+                    class="mx-1">
                     {{topic | shorten}}
                   </v-chip>
                 </v-layout>
@@ -105,7 +108,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
   h1 {
     font-family: 'Merriweather', serif;
     font-size: 4rem;
@@ -123,5 +126,8 @@ export default {
 
   .v-list--dense .v-list__tile {
     height: 30px !important;
+  }
+  .v-chip__content{
+    cursor: pointer !important;
   }
 </style>

@@ -71,10 +71,10 @@ export const store = new Vuex.Store({
   actions: {
     fetchStories: ({ commit, state }) => {
       axios.get(state.section).then(res => {
-        state.apiError = false;
+        state.apiError = false
         commit('updateStories', res.data.results)
       }).catch(() => {
-        state.apiError = true;
+        state.apiError = true
       })
     },
     changeSection: ({ commit }, payload) => {
